@@ -1,94 +1,162 @@
-document.addEventListener('DOMContentLoaded', () => {
-  
-  // --- Countdown Timer ---
-  const countdown = () => {
-    // Set target date: March 29, 2025 4:00 PM
-    const countdownDate = new Date('March 29, 2025 16:00:00').getTime();
-    const now = new Date().getTime();
-    const gap = countdownDate - now;
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1e90ff, #ffd700);
+    color: #333;
+    scroll-behavior: smooth;
+}
 
-    // Time component calculations
-    const second = 1000;
-    const minute = 60 * second;
-    const hour = 60 * minute;
-    const day = 24 * hour;
+header {
+    text-align: center;
+    padding: 50px 20px;
+    background: rgba(255, 255, 255, 0.8);
+    animation: fadeIn 1s ease-in;
+}
 
-    const days = Math.floor(gap / day);
-    const hours = Math.floor((gap % day) / hour);
-    const minutes = Math.floor((gap % hour) / minute);
-    const seconds = Math.floor((gap % minute) / second);
+h1 {
+    font-size: 3em;
+    color: #ff4500;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
 
-    document.getElementById('days').textContent = days;
-    document.getElementById('hours').textContent = hours;
-    document.getElementById('minutes').textContent = minutes;
-    document.getElementById('seconds').textContent = seconds;
-  };
+section {
+    padding: 40px 20px;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    animation: slideIn 1s ease-in;
+}
 
-  countdown(); // initial call
-  setInterval(countdown, 1000);
+h2 {
+    font-size: 2em;
+    color: #fff;
+    margin-bottom: 20px;
+}
 
+#countdown {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border-radius: 10px;
+}
 
-  // --- Invitation Form Submission ---
-  const inviteForm = document.getElementById('invite-form');
-  inviteForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    // Show confirmation message
-    document.getElementById('invite-confirmation').classList.remove('hidden');
-    // Reset the form input
-    inviteForm.reset();
-    // Trigger confetti animation using the canvas-confetti library
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 }
-    });
-  });
+#timer {
+    font-size: 1.5em;
+}
 
+#invitation form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
 
-  // --- Lightbox Functionality for Gallery ---
-  const galleryImages = document.querySelectorAll('.gallery-img');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const lightboxClose = document.getElementById('lightbox-close');
+#invitation input {
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+}
 
-  galleryImages.forEach(img => {
-    img.addEventListener('click', () => {
-      // Use the data-full attribute for the image source in the lightbox
-      lightboxImg.src = img.getAttribute('data-full');
-      lightbox.classList.remove('hidden');
-    });
-  });
+#invitation button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background: #ff4500;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
-  lightboxClose.addEventListener('click', () => {
-    lightbox.classList.add('hidden');
-  });
-  
-  // Close lightbox when clicking outside the image
-  lightbox.addEventListener('click', (e) => {
-    if (e.target !== lightboxImg && e.target !== lightboxClose) {
-      lightbox.classList.add('hidden');
-    }
-  });
+#invitation button:hover {
+    background: #e03e00;
+}
 
+#confirmation {
+    margin-top: 10px;
+    color: #fff;
+}
 
-  // --- Background Music Toggle ---
-  const musicToggle = document.getElementById('music-toggle');
-  const backgroundMusic = document.getElementById('background-music');
-  let isPlaying = false;
+#guest-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
 
-  musicToggle.addEventListener('click', () => {
-    if (!isPlaying) {
-      backgroundMusic.play();
-      isPlaying = true;
-      musicToggle.textContent = 'Pause Music';
-    } else {
-      backgroundMusic.pause();
-      isPlaying = false;
-      musicToggle.textContent = 'Play Music';
-    }
-  });
+.guest {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
-  // --- Optional: Trigger Confetti on Page Load ---
-  // Uncomment the line below if you want a confetti burst when the page loads.
-  // confetti({ particleCount: 50, spread: 100, origin: { y: 0.3 } });
-});
+.photo-gallery img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.photo-gallery img:hover {
+    transform: scale(1.05);
+}
+
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+#lightbox span {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2em;
+    color: #fff;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+#music-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background: #ff4500;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 600px) {
+    h1 { font-size: 2em; }
+    h2 { font-size: 1.5em; }
+    #timer { font-size: 1em; }
+}
