@@ -1,99 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Manthan’s Birthday Bash!</title>
-  <!-- Link to the external CSS file -->
-  <link rel="stylesheet" href="style.css">
-  <!-- Google Fonts for elegant typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manthan's Birthday Bash</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <h1>Manthan’s Birthday Bash!</h1>
+    </header>
 
-  <!-- Header Section -->
-  <header id="home">
-    <h1>Manthan’s Birthday Bash!</h1>
-    <nav>
-      <a href="#countdown">Countdown</a>
-      <a href="#invitation">Invitation</a>
-      <a href="#guestlist">Guest List</a>
-      <a href="#gallery">Gallery</a>
-    </nav>
-    <button id="music-toggle">Play Music</button>
-  </header>
+    <section id="countdown">
+        <h2>Countdown to the Party</h2>
+        <div id="timer">
+            <span id="days"></span> Days 
+            <span id="hours"></span> Hours 
+            <span id="minutes"></span> Minutes 
+            <span id="seconds"></span> Seconds
+        </div>
+    </section>
 
-  <!-- Countdown Timer Section -->
-  <section id="countdown" class="section">
-    <h2>Countdown to the Party</h2>
-    <div id="timer">
-      <div class="time-box"><span id="days">00</span><p>Days</p></div>
-      <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
-      <div class="time-box"><span id="minutes">00</span><p>Minutes</p></div>
-      <div class="time-box"><span id="seconds">00</span><p>Seconds</p></div>
-    </div>
-  </section>
+    <section id="invitation">
+        <h2>Request an Invitation</h2>
+        <form id="invite-form">
+            <input type="text" id="name" placeholder="Enter your name" required>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="confirmation" class="hidden">Thanks for requesting an invitation!</p>
+    </section>
 
-  <!-- Event Details Section -->
-  <section id="event-details" class="section">
-    <h2>Event Details</h2>
-    <p><strong>Location:</strong> Tanish House</p>
-    <p><strong>Timing:</strong> 4:00 PM</p>
-  </section>
+    <section id="guests">
+        <h2>Guest List</h2>
+        <div id="guest-list">
+            <div class="guest">Manthan</div>
+            <div class="guest">Anshu</div>
+            <div class="guest">Love Kush</div>
+            <div class="guest">Rudi</div>
+            <div class="guest">Abhi</div>
+            <div class="guest">MB</div>
+            <div class="guest">Tanji</div>
+            <div class="guest">Adi</div>
+            <div class="guest">Kushal</div>
+            <div class="guest">Marshal</div>
+            <div class="guest">Ankit</div>
+        </div>
+    </section>
 
-  <!-- Invitation Request Form Section -->
-  <section id="invitation" class="section">
-    <h2>Request Your Invitation</h2>
-    <form id="invite-form">
-      <input type="text" id="guest-name" placeholder="Enter your name" required>
-      <button type="submit">Submit</button>
-    </form>
-    <p id="invite-confirmation" class="hidden">Thanks for requesting an invitation!</p>
-  </section>
+    <section id="gallery">
+        <h2>Memories</h2>
+        <div class="photo-gallery">
+            <img src="https://photos.app.goo.gl/daQs3DqC3Ww4iWSE6" alt="Photo 1" onclick="openLightbox(this.src)">
+            <img src="https://photos.app.goo.gl/MG4vDrAdFGoJQSx19" alt="Photo 2" onclick="openLightbox(this.src)">
+        </div>
+        <div id="lightbox" class="hidden">
+            <span onclick="closeLightbox()">×</span>
+            <img id="lightbox-img" src="">
+        </div>
+    </section>
 
-  <!-- Guest List Display Section -->
-  <section id="guestlist" class="section">
-    <h2>Guest List</h2>
-    <div class="guest-grid">
-      <div class="guest-card">Manthan</div>
-      <div class="guest-card">Anshu</div>
-      <div class="guest-card">Love Kush</div>
-      <div class="guest-card">Rudi</div>
-      <div class="guest-card">Abhi</div>
-      <div class="guest-card">MB</div>
-      <div class="guest-card">Tanji</div>
-      <div class="guest-card">Adi</div>
-      <div class="guest-card">Kushal</div>
-      <div class="guest-card">Marshal</div>
-      <div class="guest-card">Ankit</div>
-    </div>
-  </section>
+    <section id="details">
+        <h2>Event Details</h2>
+        <p><strong>Location:</strong> Tanish House</p>
+        <p><strong>Timing:</strong> 4:00 PM, March 29, 2025</p>
+    </section>
 
-  <!-- Photo Gallery Section -->
-  <section id="gallery" class="section">
-    <h2>Gallery</h2>
-    <div class="gallery">
-      <img src="https://photos.app.goo.gl/daQs3DqC3Ww4iWSE6" alt="Photo 1" class="gallery-img" data-full="https://photos.app.goo.gl/daQs3DqC3Ww4iWSE6">
-      <img src="https://photos.app.goo.gl/MG4vDrAdFGoJQSx19" alt="Photo 2" class="gallery-img" data-full="https://photos.app.goo.gl/MG4vDrAdFGoJQSx19">
-    </div>
-  </section>
+    <audio id="background-music" loop>
+        <source src="party-tune.mp3" type="audio/mp3">
+    </audio>
+    <button id="music-toggle">Toggle Music</button>
 
-  <!-- Lightbox Modal for the Gallery -->
-  <div id="lightbox" class="hidden">
-    <span id="lightbox-close">&times;</span>
-    <img id="lightbox-img" src="" alt="Enlarged Photo">
-  </div>
-
-  <!-- Background Music Audio Element -->
-  <audio id="background-music" loop>
-    <!-- Replace the src value with a valid music URL or local asset -->
-    <source src="https://example.com/path-to-music.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <!-- Canvas Confetti Library via CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-  <!-- Link to the external JavaScript file -->
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
