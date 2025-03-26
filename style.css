@@ -1,217 +1,54 @@
-/* Reset and base styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+// Countdown Timer
+const partyDate = new Date("March 29, 2025 16:00:00").getTime();
+const timer = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = partyDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+
+    if (distance < 0) {
+        clearInterval(timer);
+        document.getElementById("timer").innerText = "Party Time!";
+    }
+}, 1000);
+
+// Invitation Form
+document.getElementById("invite-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    document.getElementById("confirmation").classList.remove("hidden");
+    document.getElementById("name").value = "";
+});
+
+// Lightbox
+function openLightbox(src) {
+    document.getElementById("lightbox").classList.remove("hidden");
+    document.getElementById("lightbox-img").src = src;
 }
 
-body {
-  font-family: 'Roboto', sans-serif;
-  background: #f0f0f0;
-  color: #333;
-  scroll-behavior: smooth;
-  line-height: 1.6;
+function closeLightbox() {
+    document.getElementById("lightbox").classList.add("hidden");
 }
 
-/* Header Styling */
-header {
-  background: linear-gradient(90deg, #4facfe, #00f2fe);
-  padding: 2em;
-  text-align: center;
-  color: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+// Music Toggle
+const audio = document.getElementById("background-music");
+const toggleBtn = document.getElementById("music-toggle");
+let isPlaying = false;
 
-header h1 {
-  font-size: 2.5em;
-  margin-bottom: 0.5em;
-}
-
-nav {
-  margin-bottom: 1em;
-}
-
-nav a {
-  margin: 0 1em;
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #ffd700;
-}
-
-#music-toggle {
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  padding: 0.5em 1em;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-#music-toggle:hover {
-  background: rgba(255, 255, 255, 0.4);
-}
-
-/* Section Styling */
-.section {
-  padding: 4em 2em;
-  margin: 1em auto;
-  max-width: 1000px;
-  background: #fff;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s forwards;
-}
-
-/* Fade in animation for sections */
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Countdown Timer Styles */
-#timer {
-  display: flex;
-  justify-content: center;
-  gap: 1em;
-  margin-top: 1em;
-}
-
-.time-box {
-  background: #ffd700;
-  padding: 1em;
-  border-radius: 6px;
-  width: 100px;
-}
-
-.time-box span {
-  font-size: 2em;
-  display: block;
-}
-
-/* Invitation Form Styles */
-#invite-form {
-  margin: 2em 0;
-}
-
-#invite-form input {
-  padding: 0.5em;
-  width: 60%;
-  max-width: 300px;
-  border: 2px solid #4facfe;
-  border-radius: 4px;
-  margin-right: 0.5em;
-}
-
-#invite-form button {
-  padding: 0.5em 1em;
-  background: #4facfe;
-  border: none;
-  border-radius: 4px;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-#invite-form button:hover {
-  background: #00f2fe;
-}
-
-.hidden {
-  display: none;
-}
-
-/* Guest List Styles */
-.guest-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 1em;
-  margin-top: 2em;
-}
-
-.guest-card {
-  background: #00f2fe;
-  color: #fff;
-  padding: 1em;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-/* Gallery Styles */
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-  justify-content: center;
-}
-
-.gallery-img {
-  width: 300px;
-  max-width: 100%;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.gallery-img:hover {
-  transform: scale(1.05);
-}
-
-/* Lightbox Modal Styles */
-#lightbox {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
-
-#lightbox.hidden {
-  display: none;
-}
-
-#lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 8px;
-}
-
-#lightbox-close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 3em;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  header h1 {
-    font-size: 2em;
-  }
-  
-  .section {
-    padding: 2em;
-  }
-  
-  #timer {
-    flex-direction: column;
-  }
-}
+toggleBtn.addEventListener("click", () => {
+    if (isPlaying) {
+        audio.pause();
+        toggleBtn.innerText = "Play Music";
+    } else {
+        audio.play();
+        toggleBtn.innerText = "Pause Music";
+    }
+    isPlaying = !isPlaying;
+});
