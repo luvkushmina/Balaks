@@ -3,51 +3,332 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manthan's Birthday Party 🎉🎂</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Manthan's Birthday Party Invitation</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff6f61, #d4a5a5, #6b48ff);
+            color: #fff;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            color: #ffeb3b;
+            text-shadow: 2px 2px 4px #000;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #ffeb3b, 0 0 20px #ffeb3b; }
+            to { text-shadow: 0 0 20px #ff6f61, 0 0 30px #ff6f61; }
+        }
+        .input-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 12px;
+            width: 250px;
+            border: 2px solid #ffeb3b;
+            border-radius: 8px;
+            font-size: 1.1em;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        button {
+            padding: 12px 30px;
+            background: #ff6f61;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.2s;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        button:hover {
+            background: #e65b50;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 235, 59, 0.2);
+            border-radius: 10px;
+            display: none;
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ffeb3b;
+            text-align: center;
+        }
+        th {
+            background: #ff6f61;
+            color: #fff;
+        }
+        .total-row {
+            font-weight: bold;
+            background: #ffeb3b;
+            color: #333;
+        }
+        .highlight {
+            background: rgba(138, 43, 226, 0.5);
+            color: #ffeb3b;
+            font-weight: bold;
+        }
+        .afterparty {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(138, 43, 226, 0.3);
+            border-radius: 10px;
+            animation: slideIn 0.5s ease-out;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ffeb3b;
+            animation: fall 5s linear infinite;
+        }
+        .confetti.circle { border-radius: 50%; }
+        .confetti.triangle {
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        .music-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            background: #ffeb3b;
+            color: #333;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+    </style>
 </head>
 <body>
-    <header id="title-box">
-        <h1>Manthan's Birthday Party 🎉🎂</h1>
-    </header>
-    <main>
-        <section id="countdown">
-            <!-- Timer will dynamically populate here -->
-        </section>
-        <button id="join-btn">Join the Party!</button>
-        <section id="guest-box" class="hidden">
-            <h2>Welcome to the Party! 🎂</h2>
-            <table>
+    <div class="music-toggle" onclick="toggleMusic()">🎵 Play Music</div>
+    <audio id="partyMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="container">
+        <h1>🎉 Manthan's Birthday Party - 29th March 🎉</h1>
+        <div class="input-section">
+            <p style="font-size: 1.2em;">Enter your name to join the celebration!</p>
+            <input type="text" id="nameInput" placeholder="Your Name">
+            <button onclick="generateInvite()">Get Invitation</button>
+        </div>
+
+        <div id="result">
+            <h2 id="greeting"></h2>
+            <p id="interference"></p>
+            <p id="price"></p>
+            <h3>Contributions So Far</h3>
+            <table id="contributionsTable">
                 <thead>
                     <tr>
-                        <th>Guest</th>
-                        <th>Contribution (₹)</th>
+                        <th>Name</th>
+                        <th>Amount Contributed (Rupees)</th>
+                        <th>Notes</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Guest list data -->
-                    <tr><td>Abhishek</td><td>200</td></tr>
-                    <tr><td>Aditya</td><td>50</td></tr>
-                    <tr><td>Ankit</td><td>0</td></tr>
-                    <tr><td>Anshu</td><td>400</td></tr>
-                    <tr><td>Rudra</td><td>200</td></tr>
-                    <tr><td>Tanish</td><td>150</td></tr>
-                    <tr><td>Mayank Bhat</td><td>200</td></tr>
-                    <tr><td>Mayank Rawat</td><td>200</td></tr>
-                    <tr><td>Love Kush</td><td>200</td></tr>
-                    <tr><td>Kushal</td><td>0</td></tr>
-                    <tr><td>Manthan</td><td>600</td></tr>
+                    <tr>
+                        <td>Manthan</td>
+                        <td>900</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Anshu</td>
+                        <td>100</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Love Kushal</td>
+                        <td>200</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Rudi</td>
+                        <td>200</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Abhi</td>
+                        <td>200</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>MB</td>
+                        <td>200</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Tani</td>
+                        <td>150</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Adi</td>
+                        <td>100</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Mr</td>
+                        <td>0</td>
+                        <td>sexy criteria; Free entry</td>
+                    </tr>
+                    <tr>
+                        <td>Kushal</td>
+                        <td>0</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Ankit</td>
+                        <td>0</td>
+                        <td>sexy criteria; Free entry</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td>Total</td>
+                        <td>2050</td>
+                        <td>6 people free entry</td>
+                    </tr>
                 </tbody>
             </table>
-            <div id="contributions">
-                Contributions So Far: ₹2,200
+
+            <div class="afterparty">
+                <h3>🎶 Afterparty Plans 🎶</h3>
+                <p>The party doesn't stop! Join us for an afterparty at Manthan's place!</p>
+                <p id="afterpartyActivity"></p>
             </div>
-        </section>
-    </main>
-    <footer>
-        <p>Caution: Party snacks might be too delicious! 🍕</p>
-        <p>Please Bring: ₹200 for party supplies</p>
-    </footer>
-    <script src="script.js"></script>
+        </div>
+    </div>
+
+    <script>
+        // Music toggle
+        const music = document.getElementById('partyMusic');
+        const musicToggle = document.querySelector('.music-toggle');
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                music.pause();
+                musicToggle.textContent = '🎵 Play Music';
+            } else {
+                music.play();
+                musicToggle.textContent = '🎵 Pause Music';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Generate confetti with varied shapes
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            const shape = Math.random() > 0.5 ? 'circle' : 'triangle';
+            confetti.classList.add(shape);
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.background = ['#ffeb3b', '#ff6f61', '#d4a5a5', '#6b48ff'][Math.floor(Math.random() * 4)];
+            confetti.style.width = Math.random() * 10 + 5 + 'px';
+            confetti.style.height = Math.random() * 10 + 5 + 'px';
+            document.body.appendChild(confetti);
+        }
+        setInterval(createConfetti, 150);
+
+        function generateInvite() {
+            const nameInput = document.getElementById('nameInput').value.trim();
+            const resultDiv = document.getElementById('result');
+            const greeting = document.getElementById('greeting');
+            const interference = document.getElementById('interference');
+            const price = document.getElementById('price');
+            const afterpartyActivity = document.getElementById('afterpartyActivity');
+            const tableRows = document.querySelectorAll('#contributionsTable tbody tr');
+
+            if (nameInput === '') {
+                alert('Please enter your name!');
+                return;
+            }
+
+            // Normalize the name for comparison (case-insensitive)
+            const name = nameInput.toLowerCase();
+
+            const interferences = [
+                "Beware! The disco ball might hypnotize you! 🕺",
+                "Warning: Excessive dancing may occur! 💃",
+                "Caution: Party snacks might be too delicious! 🍕",
+                "Alert: You might not want to leave! 🎈"
+            ];
+
+            const afterpartyActivities = [
+                "Karaoke showdown! 🎤 Bring your best singing voice!",
+                "Late-night gaming session! 🎮 Bring your controllers!",
+                "Bonfire and storytelling! 🔥 Share your spookiest tales!",
+                "Dance-off under the stars! 🌟 Show off your moves!"
+            ];
+
+            // Determine the amount to bring based on the name
+            let amountToBring;
+            if (name === 'mayank' || name === 'love kushal' || name === 'rudra' || name === 'rudi' || name === 'abhishek' || name === 'abhi' || name === 'kushal') {
+                amountToBring = 200;
+            } else if (name === 'tanish' || name === 'tani') {
+                amountToBring = 150;
+            } else if (name === 'aditya' || name === 'adi') {
+                amountToBring = 100;
+            } else {
+                amountToBring = 200; // Default for other names
+            }
+
+            const randomInterference = interferences[Math.floor(Math.random() * interferences.length)];
+            const randomActivity = afterpartyActivities[Math.floor(Math.random() * afterpartyActivities.length)];
+
+            greeting.textContent = `Welcome to the Party, ${nameInput}! 🎂`;
+            interference.textContent = `Party Interference: ${randomInterference}`;
+            price.textContent = `Please bring: ₹${amountToBring} for party supplies`;
+            afterpartyActivity.textContent = `Afterparty Activity: ${randomActivity}`;
+
+            // Highlight the name in the table if it matches
+            tableRows.forEach(row => {
+                const rowName = row.cells[0].textContent.toLowerCase();
+                if (rowName === name || (name === 'rudra' && rowName === 'rudi') || (name === 'abhishek' && rowName === 'abhi') || (name === 'tanish' && rowName === 'tani') || (name === 'aditya' && rowName === 'adi')) {
+                    row.classList.add('highlight');
+                }
+            });
+
+            resultDiv.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
