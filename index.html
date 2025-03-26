@@ -1,49 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manthan's Birthday Bash</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Manthan’s Birthday Bash!</title>
+  <!-- Link to the external CSS file -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts for elegant typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <!-- Invitation Card Section -->
-        <div class="invitation-card">
-            <div class="balloons"></div>
-            <h1>Manthan's <span>Birthday Bash</span></h1>
-            <div class="cake"></div>
-            <div class="details">
-                <h2>29th March</h2>
-                <p>8 PM</p>
-                <p>Event at 2 Mar H M009</p>
-                <p>Let's make it a day to remember!</p>
-            </div>
-        </div>
 
-        <!-- Guest List Section -->
-        <div class="guest-list">
-            <h2>Guest List</h2>
-            <form id="guestForm">
-                <input type="text" id="guestName" placeholder="Enter guest name" required>
-                <button type="submit">Add Guest</button>
-            </form>
-            <ul id="guestList"></ul>
-        </div>
+  <!-- Header Section -->
+  <header id="home">
+    <h1>Manthan’s Birthday Bash!</h1>
+    <nav>
+      <a href="#countdown">Countdown</a>
+      <a href="#invitation">Invitation</a>
+      <a href="#guestlist">Guest List</a>
+      <a href="#gallery">Gallery</a>
+    </nav>
+    <button id="music-toggle">Play Music</button>
+  </header>
+
+  <!-- Countdown Timer Section -->
+  <section id="countdown" class="section">
+    <h2>Countdown to the Party</h2>
+    <div id="timer">
+      <div class="time-box"><span id="days">00</span><p>Days</p></div>
+      <div class="time-box"><span id="hours">00</span><p>Hours</p></div>
+      <div class="time-box"><span id="minutes">00</span><p>Minutes</p></div>
+      <div class="time-box"><span id="seconds">00</span><p>Seconds</p></div>
     </div>
+  </section>
 
-    <script>
-        // JavaScript to handle guest list form
-        document.getElementById('guestForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const guestName = document.getElementById('guestName').value;
-            if (guestName) {
-                const li = document.createElement('li');
-                li.textContent = guestName;
-                document.getElementById('guestList').appendChild(li);
-                document.getElementById('guestName').value = ''; // Clear input
-            }
-        });
-    </script>
+  <!-- Event Details Section -->
+  <section id="event-details" class="section">
+    <h2>Event Details</h2>
+    <p><strong>Location:</strong> Tanish House</p>
+    <p><strong>Timing:</strong> 4:00 PM</p>
+  </section>
+
+  <!-- Invitation Request Form Section -->
+  <section id="invitation" class="section">
+    <h2>Request Your Invitation</h2>
+    <form id="invite-form">
+      <input type="text" id="guest-name" placeholder="Enter your name" required>
+      <button type="submit">Submit</button>
+    </form>
+    <p id="invite-confirmation" class="hidden">Thanks for requesting an invitation!</p>
+  </section>
+
+  <!-- Guest List Display Section -->
+  <section id="guestlist" class="section">
+    <h2>Guest List</h2>
+    <div class="guest-grid">
+      <div class="guest-card">Manthan</div>
+      <div class="guest-card">Anshu</div>
+      <div class="guest-card">Love Kush</div>
+      <div class="guest-card">Rudi</div>
+      <div class="guest-card">Abhi</div>
+      <div class="guest-card">MB</div>
+      <div class="guest-card">Tanji</div>
+      <div class="guest-card">Adi</div>
+      <div class="guest-card">Kushal</div>
+      <div class="guest-card">Marshal</div>
+      <div class="guest-card">Ankit</div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery Section -->
+  <section id="gallery" class="section">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <img src="https://photos.app.goo.gl/daQs3DqC3Ww4iWSE6" alt="Photo 1" class="gallery-img" data-full="https://photos.app.goo.gl/daQs3DqC3Ww4iWSE6">
+      <img src="https://photos.app.goo.gl/MG4vDrAdFGoJQSx19" alt="Photo 2" class="gallery-img" data-full="https://photos.app.goo.gl/MG4vDrAdFGoJQSx19">
+    </div>
+  </section>
+
+  <!-- Lightbox Modal for the Gallery -->
+  <div id="lightbox" class="hidden">
+    <span id="lightbox-close">&times;</span>
+    <img id="lightbox-img" src="" alt="Enlarged Photo">
+  </div>
+
+  <!-- Background Music Audio Element -->
+  <audio id="background-music" loop>
+    <!-- Replace the src value with a valid music URL or local asset -->
+    <source src="https://example.com/path-to-music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- Canvas Confetti Library via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <!-- Link to the external JavaScript file -->
+  <script src="script.js"></script>
 </body>
 </html>
