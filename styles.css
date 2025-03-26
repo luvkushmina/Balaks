@@ -9,7 +9,7 @@ body {
     background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
     color: white;
     overflow-x: hidden;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,6 +20,7 @@ body {
     text-align: center;
     z-index: 1;
     padding: 20px;
+    max-width: 100%;
 }
 
 /* Cake-Shaped Title Box */
@@ -202,7 +203,7 @@ body {
 
 /* Initial Animation (Balloon Pop) */
 .initial-animation {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -217,8 +218,8 @@ body {
     position: absolute;
     width: 50px;
     height: 50px;
-    background: url('https://images.emojiterra.com/google/noto-emoji/unicode-16.0/color/svg/1f388.svg') no-repeat center;
-    background-size: contain;
+    background: #ff4444;
+    border-radius: 50%;
     animation: balloonPop 2s forwards;
 }
 
@@ -249,7 +250,7 @@ body {
 
 /* Continuous Balloon Animation */
 .balloons {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -263,8 +264,8 @@ body {
     position: absolute;
     width: 50px;
     height: 50px;
-    background: url('https://images.emojiterra.com/google/noto-emoji/unicode-16.0/color/svg/1f388.svg') no-repeat center;
-    background-size: contain;
+    background: #ff4444;
+    border-radius: 50%;
     animation: float 10s infinite linear;
 }
 
@@ -291,7 +292,7 @@ body {
 
 /* Continuous Sparks Animation */
 .sparks {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
