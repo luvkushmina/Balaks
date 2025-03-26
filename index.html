@@ -8,7 +8,12 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="neon-title">Manthan's Birthday Party 🎉🎂</h1>
+        <!-- Title in Cake-Shaped Box -->
+        <div class="cake-box">
+            <h1 class="neon-title">Manthan's Birthday Party 🎉🎂</h1>
+        </div>
+
+        <!-- Countdown Timer -->
         <div class="countdown">
             <div class="time-box">
                 <span id="days">00</span>
@@ -27,15 +32,53 @@
                 <p>Seconds</p>
             </div>
         </div>
-        <div class="event-details">
-            <p>📅 29th March 2025</p>
-            <p>🕗 8:00 PM</p>
-            <p>📍 Event at TTL, 29 Mar, H M009</p>
-            <p>🎈 Let's make it a day to remember!</p>
+
+        <!-- Join the Party Button -->
+        <button class="join-button" onclick="showGuestList()">Join the Party!</button>
+
+        <!-- Guest List Section (Hidden Initially) -->
+        <div class="guest-list-container" id="guestList" style="display: none;">
+            <h2 class="welcome-message">Welcome to the Party! 🎂</h2>
+            <div class="table-box">
+                <table class="guest-table">
+                    <thead>
+                        <tr>
+                            <th>Guest</th>
+                            <th>Contribution (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Abhishek</td><td>200</td></tr>
+                        <tr><td>Aditya</td><td>50</td></tr>
+                        <tr><td>Ankit</td><td>0</td></tr>
+                        <tr><td>Anshu</td><td>400</td></tr>
+                        <tr><td>Rudra</td><td>200</td></tr>
+                        <tr><td>Tanish</td><td>150</td></tr>
+                        <tr><td>Mayank Bhat</td><td>200</td></tr>
+                        <tr><td>Mayank Rawat</td><td>200</td></tr>
+                        <tr><td>Love Kush</td><td>200</td></tr>
+                        <tr><td>Kushal</td><td>0</td></tr>
+                        <tr><td>Manthan</td><td>600</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Additional Information -->
+        <div class="party-info">
+            <p class="party-interference">Party Interference: Caution: Party snacks might be too delicious! 🍕</p>
+            <p class="please-bring">Please Bring: ₹200 for party supplies</p>
+            <div class="contributions-box">
+                <p class="contributions">Contributions So Far: ₹2,200</p>
+            </div>
         </div>
     </div>
+
+    <!-- Animations -->
     <div class="balloons"></div>
     <div class="sparks"></div>
+    <div class="initial-animation" id="initialAnimation"></div>
+
     <script src="script.js"></script>
 </body>
 </html>
