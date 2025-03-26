@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manthan's Birthday</title>
+    <title>Manthan's Birthday Bash</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1><span class="highlight">Manthan</span>’s Birthday</h1>
+        <h1>Manthan’s Birthday Bash!</h1>
     </header>
 
     <section id="countdown">
-        <h2>Countdown to the Celebration</h2>
+        <h2>Countdown to the Party</h2>
         <div id="timer">
             <span id="days"></span> Days 
             <span id="hours"></span> Hours 
@@ -21,8 +21,17 @@
         </div>
     </section>
 
+    <section id="invitation">
+        <h2>Request an Invitation</h2>
+        <form id="invite-form">
+            <input type="text" id="name" placeholder="Enter your name" required>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="confirmation" class="hidden">Thanks for requesting an invitation!</p>
+    </section>
+
     <section id="guests">
-        <h2>Confirmed Guests</h2>
+        <h2>Guest List</h2>
         <div id="guest-list">
             <div class="guest">Manthan</div>
             <div class="guest">Anshu</div>
@@ -38,6 +47,18 @@
         </div>
     </section>
 
+    <section id="gallery">
+        <h2>Memories</h2>
+        <div class="photo-gallery">
+            <img src="https://photos.app.goo.gl/daQs3DqC3Ww4iWSE6" alt="Photo 1" onclick="openLightbox(this.src)">
+            <img src="https://photos.app.goo.gl/MG4vDrAdFGoJQSx19" alt="Photo 2" onclick="openLightbox(this.src)">
+        </div>
+        <div id="lightbox" class="hidden">
+            <span onclick="closeLightbox()">×</span>
+            <img id="lightbox-img" src="">
+        </div>
+    </section>
+
     <section id="details">
         <h2>Event Details</h2>
         <p><strong>Location:</strong> Tanish House</p>
@@ -49,9 +70,6 @@
     </audio>
     <button id="music-toggle">Toggle Music</button>
 
-    <canvas id="balloon-canvas"></canvas>
-
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
