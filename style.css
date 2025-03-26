@@ -1,53 +1,133 @@
-body {
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
-    color: #333;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f8d7da; /* Light pink background like the card */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 .container {
-    text-align: center;
-    padding: 50px;
-    max-width: 800px;
-    margin: 0 auto;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-h1 {
-    font-size: 48px;
-    color: #ff4500;
-    text-shadow: 2px 2px 4px #ffd700;
+/* Invitation Card Styling */
+.invitation-card {
+    background-color: #1a2a44; /* Dark blue background */
+    color: white;
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.balloons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://via.placeholder.com/400x600?text=Balloons') no-repeat center;
+    opacity: 0.3;
+    z-index: 0;
+}
+
+.invitation-card h1 {
+    font-size: 2.5em;
+    color: #ffeb3b; /* Yellow text */
+    z-index: 1;
+    position: relative;
+}
+
+.invitation-card h1 span {
+    color: #f44336; /* Red text for "Birthday Bash" */
+}
+
+.cake {
+    width: 150px;
+    height: 150px;
+    background: url('https://via.placeholder.com/150x150?text=Cake') no-repeat center;
+    margin: 20px auto;
+    z-index: 1;
+    position: relative;
+}
+
+.details h2 {
+    font-size: 2em;
+    color: #ffeb3b;
+}
+
+.details p {
+    font-size: 1.2em;
+    color: #ffffff;
+    margin: 5px 0;
+}
+
+/* Guest List Styling */
+.guest-list {
+    background-color: white;
+    width: 300px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.guest-list h2 {
+    font-size: 1.8em;
+    color: #1a2a44;
     margin-bottom: 20px;
 }
 
-p {
-    font-size: 18px;
-    line-height: 1.6;
+.guest-list form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.details, .rsvp {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    margin: 20px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.guest-list input {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-h2 {
-    color: #1e90ff;
-    font-size: 28px;
-    margin-bottom: 15px;
+.guest-list button {
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
 }
 
-a {
-    color: #ff69b4;
-    text-decoration: none;
+.guest-list button:hover {
+    background-color: #d32f2f;
 }
 
-a:hover {
-    text-decoration: underline;
+.guest-list ul {
+    list-style: none;
+    margin-top: 20px;
+    text-align: left;
 }
 
-/* Fun party vibe */
-body {
-    background-image: linear-gradient(to bottom, #87ceeb, #ffb6c1);
+.guest-list li {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1em;
+    color: #1a2a44;
 }
