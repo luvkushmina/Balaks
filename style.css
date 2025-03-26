@@ -1,133 +1,217 @@
+/* Reset and base styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #f8d7da; /* Light pink background like the card */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  background: #f0f0f0;
+  color: #333;
+  scroll-behavior: smooth;
+  line-height: 1.6;
 }
 
-.container {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
+/* Header Styling */
+header {
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  padding: 2em;
+  text-align: center;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-/* Invitation Card Styling */
-.invitation-card {
-    background-color: #1a2a44; /* Dark blue background */
-    color: white;
-    width: 400px;
-    padding: 20px;
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
+header h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
 }
 
-.balloons {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('https://via.placeholder.com/400x600?text=Balloons') no-repeat center;
-    opacity: 0.3;
-    z-index: 0;
+nav {
+  margin-bottom: 1em;
 }
 
-.invitation-card h1 {
-    font-size: 2.5em;
-    color: #ffeb3b; /* Yellow text */
-    z-index: 1;
-    position: relative;
+nav a {
+  margin: 0 1em;
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
-.invitation-card h1 span {
-    color: #f44336; /* Red text for "Birthday Bash" */
+nav a:hover {
+  color: #ffd700;
 }
 
-.cake {
-    width: 150px;
-    height: 150px;
-    background: url('https://via.placeholder.com/150x150?text=Cake') no-repeat center;
-    margin: 20px auto;
-    z-index: 1;
-    position: relative;
+#music-toggle {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: 0.5em 1em;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-.details h2 {
+#music-toggle:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Section Styling */
+.section {
+  padding: 4em 2em;
+  margin: 1em auto;
+  max-width: 1000px;
+  background: #fff;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+}
+
+/* Fade in animation for sections */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Countdown Timer Styles */
+#timer {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.time-box {
+  background: #ffd700;
+  padding: 1em;
+  border-radius: 6px;
+  width: 100px;
+}
+
+.time-box span {
+  font-size: 2em;
+  display: block;
+}
+
+/* Invitation Form Styles */
+#invite-form {
+  margin: 2em 0;
+}
+
+#invite-form input {
+  padding: 0.5em;
+  width: 60%;
+  max-width: 300px;
+  border: 2px solid #4facfe;
+  border-radius: 4px;
+  margin-right: 0.5em;
+}
+
+#invite-form button {
+  padding: 0.5em 1em;
+  background: #4facfe;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#invite-form button:hover {
+  background: #00f2fe;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Guest List Styles */
+.guest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1em;
+  margin-top: 2em;
+}
+
+.guest-card {
+  background: #00f2fe;
+  color: #fff;
+  padding: 1em;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Gallery Styles */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+}
+
+.gallery-img {
+  width: 300px;
+  max-width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.gallery-img:hover {
+  transform: scale(1.05);
+}
+
+/* Lightbox Modal Styles */
+#lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+#lightbox.hidden {
+  display: none;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+}
+
+#lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 3em;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  header h1 {
     font-size: 2em;
-    color: #ffeb3b;
-}
-
-.details p {
-    font-size: 1.2em;
-    color: #ffffff;
-    margin: 5px 0;
-}
-
-/* Guest List Styling */
-.guest-list {
-    background-color: white;
-    width: 300px;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-}
-
-.guest-list h2 {
-    font-size: 1.8em;
-    color: #1a2a44;
-    margin-bottom: 20px;
-}
-
-.guest-list form {
-    display: flex;
+  }
+  
+  .section {
+    padding: 2em;
+  }
+  
+  #timer {
     flex-direction: column;
-    gap: 10px;
-}
-
-.guest-list input {
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.guest-list button {
-    padding: 10px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-}
-
-.guest-list button:hover {
-    background-color: #d32f2f;
-}
-
-.guest-list ul {
-    list-style: none;
-    margin-top: 20px;
-    text-align: left;
-}
-
-.guest-list li {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-    font-size: 1.1em;
-    color: #1a2a44;
+  }
 }
