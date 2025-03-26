@@ -3,163 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manthan's Birthday Party</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f8ff;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            background-color: #ff4500;
-            color: white;
-            padding: 20px;
-            font-size: 36px;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-        .balloon-box {
-            position: relative;
-            background-color: #fffacd;
-            border: 3px solid #ff69b4;
-            border-radius: 15px;
-            width: 50%;
-            margin: 20px auto;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .balloon {
-            position: absolute;
-            width: 50px;
-            height: 70px;
-            background-color: #ff0000;
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            box-shadow: inset -10px -10px 0 rgba(0, 0, 0, 0.1);
-        }
-        .balloon::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 20px;
-            background-color: #000;
-        }
-        .balloon:nth-child(1) {
-            background-color: #ff0000;
-            top: -40px;
-            left: 10%;
-        }
-        .balloon:nth-child(2) {
-            background-color: #00ff00;
-            top: -40px;
-            right: 10%;
-        }
-        .balloon:nth-child(3) {
-            background-color: #0000ff;
-            bottom: -40px;
-            left: 10%;
-        }
-        .balloon:nth-child(4) {
-            background-color: #ffff00;
-            bottom: -40px;
-            right: 10%;
-        }
-        .check-list {
-            margin: 20px auto;
-            width: 50%;
-            background-color: #e6e6fa;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .check-list input {
-            padding: 10px;
-            font-size: 16px;
-            margin-right: 10px;
-            border: 2px solid #ff69b4;
-            border-radius: 5px;
-        }
-        .check-list button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #ff69b4;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .check-list button:hover {
-            background-color: #ff1493;
-        }
-        #result {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-    </style>
+    <title>Manthan's Birthday Bash</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="header">Manthan's Birthday Party! 🎉</div>
+    <div class="container">
+        <!-- Invitation Card Section -->
+        <div class="invitation-card">
+            <div class="balloons"></div>
+            <h1>Manthan's <span>Birthday Bash</span></h1>
+            <div class="cake"></div>
+            <div class="details">
+                <h2>29th March</h2>
+                <p>8 PM</p>
+                <p>Event at 2 Mar H M009</p>
+                <p>Let's make it a day to remember!</p>
+            </div>
+        </div>
 
-    <div class="balloon-box">
-        <div class="balloon"></div>
-        <div class="balloon"></div>
-        <div class="balloon"></div>
-        <div class="balloon"></div>
-        <h2>Welcome to the Celebration!</h2>
-        <p>Join us on 29th March for an amazing party!</p>
-        <p>Total Contributions: ₹2250</p>
-        <p>Notes: 5/6 people free entry</p>
-    </div>
-
-    <div class="check-list">
-        <h3>Check if You're on the Guest List</h3>
-        <input type="text" id="nameInput" placeholder="Enter your name">
-        <button onclick="checkName()">Check</button>
-        <div id="result"></div>
+        <!-- Guest List Section -->
+        <div class="guest-list">
+            <h2>Guest List</h2>
+            <form id="guestForm">
+                <input type="text" id="guestName" placeholder="Enter guest name" required>
+                <button type="submit">Add Guest</button>
+            </form>
+            <ul id="guestList"></ul>
+        </div>
     </div>
 
     <script>
-        // Guest list from the data provided
-        const guestList = [
-            "Manthan",
-            "Anshu",
-            "Love Kush",
-            "Rudi",
-            "Abhi",
-            "MB",
-            "Tanji",
-            "Adi",
-            "Kushal",
-            "Anshal",
-            "Ankit"
-        ];
-
-        function checkName() {
-            const nameInput = document.getElementById("nameInput").value.trim();
-            const resultDiv = document.getElementById("result");
-
-            if (nameInput === "") {
-                resultDiv.innerHTML = "Please enter a name!";
-                resultDiv.style.color = "red";
-                return;
+        // JavaScript to handle guest list form
+        document.getElementById('guestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const guestName = document.getElementById('guestName').value;
+            if (guestName) {
+                const li = document.createElement('li');
+                li.textContent = guestName;
+                document.getElementById('guestList').appendChild(li);
+                document.getElementById('guestName').value = ''; // Clear input
             }
-
-            // Case-insensitive comparison
-            const isOnList = guestList.some(name => name.toLowerCase() === nameInput.toLowerCase());
-
-            if (isOnList) {
-                resultDiv.innerHTML = `🎉 Welcome, ${nameInput}! You're on the guest list!`;
-                resultDiv.style.color = "green";
-            } else {
-                resultDiv.innerHTML = `Sorry, ${nameInput}, you're not on the guest list.`;
-                resultDiv.style.color = "red";
-            }
-        }
+        });
     </script>
 </body>
 </html>
