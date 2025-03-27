@@ -32,6 +32,6 @@ window.onload = function() {
     });
 
     // Optional: Add cheerful background music (uncomment and add an audio file if desired)
-    // const audio = new Audio('path/to/cheerful-birthday-music.mp3');
-    // audio.play();
+    const audio = new Audio('https://www.chosic.com/wp-content/uploads/2023/01/Luke-Bergs-Beach-Vibes(chosic.com).mp3');
+    audio.play();
 };
