@@ -38,19 +38,48 @@
         </div>
         <div class="fireworks-text">Happy Birthday!</div>
     </div>
-<audio id="background-audio" loop preload="auto" style="display:none;">
-    <source src="https://www.chosic.com/wp-content/uploads/2023/01/Luke-Bergs-Beach-Vibes%28chosic.com%29.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-</audio>
 
-<script>
-    window.onload = function() {
-        var audio = document.getElementById("background-audio");
-        audio.play().catch(function(error) {
-            // Autoplay was prevented, handle accordingly
-            console.log("Autoplay prevented: " + error);
-        });
-    };
-</script>
+    <!-- Audio element -->
+    <audio id="background-audio" loop preload="auto" style="display:none;">
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Scripts -->
+    <script>
+        // Countdown timer (assuming you want one since you have timer elements)
+        function updateCountdown() {
+            const targetDate = new Date("March 29, 2025 00:00:00").getTime();
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("days").textContent = days;
+            document.getElementById("hours").textContent = hours;
+            document.getElementById("minutes").textContent = minutes;
+            document.getElementById("seconds").textContent = seconds;
+        }
+
+        // Audio handling
+        window.onload = function() {
+            // Start countdown
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+            // Audio playback
+            var audio = document.getElementById("background-audio");
+            audio.play().catch(function(error) {
+                console.log("Autoplay prevented: " + error);
+                // Optional: Add a fallback to play on user interaction
+                document.body.addEventListener('click', function() {
+                    audio.play();
+                }, { once: true });
+            });
+        };
+    </script>
 </body>
 </html>
