@@ -13,6 +13,8 @@
         <div class="balloon balloon1"></div>
         <div class="balloon balloon2"></div>
         <div class="balloon balloon3"></div>
+        <div class="balloon balloon4"></div>
+        <div class="balloon balloon5"></div>
     </div>
 
     <!-- Main content -->
@@ -28,17 +30,6 @@
         <a href="https://roaring-pasca-1076fe.netlify.app/" class="guest-list-btn">Guest List</a>
     </div>
 
-    <!-- Animation sequence container -->
-    <div class="animation-sequence">
-        <div class="cake"></div>
-        <div class="candles">
-            <div class="candle candle1"></div>
-            <div class="candle candle2"></div>
-            <div class="candle candle3"></div>
-        </div>
-        <div class="fireworks-text">Happy Birthday!</div>
-    </div>
-
     <!-- Audio element -->
     <audio id="background-audio" loop preload="auto" style="display:none;">
         <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
@@ -49,7 +40,7 @@
     <script>
         // Countdown timer (assuming you want one since you have timer elements)
         function updateCountdown() {
-            const targetDate = new Date("March 29, 2025 00:00:00").getTime();
+            const targetDate = new Date("March 29, 2025 16:00:00").getTime();
             const now = new Date().getTime();
             const difference = targetDate - now;
 
