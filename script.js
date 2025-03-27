@@ -1,4 +1,5 @@
 // Countdown Timer
+
 function updateCountdown() {
     const targetDate = new Date("March 29, 2025 16:00:00").getTime(); // 4:00 PM
     const now = new Date().getTime();
@@ -32,6 +33,15 @@ window.onload = function() {
     });
 
     // Optional: Add cheerful background music (uncomment and add an audio file if desired)
-    const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+audio = new Audio('https://www.chosic.com/wp-content/uploads/2023/01/Luke-Bergs-Beach-Vibes(chosic.com).mp3');
+audio.loop = true;
+audio.play();
+document.getElementById('audioControlButton').addEventListener('click', function() {
+  if (audio.paused) {
     audio.play();
-};
+    this.textContent = "Pause";
+  } else {
+    audio.pause();
+    this.textContent = "Play";
+  }
+});
