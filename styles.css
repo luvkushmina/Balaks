@@ -211,7 +211,7 @@ body {
 /* Responsive design */
 @media (max-width: 600px) {
     .header { font-size: 2.5rem; }
-    .birthday-image { width: 150px; height: 150px; }
+    .birthday-image { width: 250px; height: 250px; }
     .timer-box { font-size: 1rem; min-width: 60px; }
     .timer-box span { font-size: 1.2rem; }
     .guest-list-btn { font-size: 1rem; padding: 8px 16px; }
