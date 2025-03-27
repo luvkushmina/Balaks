@@ -38,7 +38,7 @@ body {
 .birthday-image {
     width: 200px;
     height: 200px;
-    border-radius: 70%;
+    border-radius: 90%;
     object-fit: cover;
     border: 5px solid #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
