@@ -70,4 +70,77 @@
         };
     </script>
 </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rotating Music Disk</title>
+    <style>
+        /* Styling for the disk */
+        .disk-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        .disk {
+            width: 100px;
+            height: 100px;
+            background-color: #333; /* Fallback color */
+            background-image: url('https://via.placeholder.com/100?text=Disk'); /* Placeholder image */
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.1s linear;
+        }
+        /* Rotation animation */
+        .rotating {
+            animation: spin 4s linear infinite;
+        }
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        /* Audio player styling */
+        .audio-player {
+            margin-top: 150px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Disk in top-left corner -->
+    <div class="disk-container">
+        <div id="musicDisk" class="disk"></div>
+    </div>
+
+    <!-- Audio player -->
+    <div class="audio-player">
+        <h1>Beach Vibes by Luke Bergs</h1>
+        <audio id="audioPlayer" controls>
+            <source src="https://www.chosic.com/wp-content/uploads/2023/01/Luke-Bergs-Beach-Vibes%28chosic.com%29.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <!-- JavaScript to control disk rotation -->
+    <script>
+        const audio = document.getElementById('audioPlayer');
+        const disk = document.getElementById('musicDisk');
+
+        // Start/stop rotation based on audio playback
+        audio.addEventListener('play', () => {
+            disk.classList.add('rotating');
+        });
+        audio.addEventListener('pause', () => {
+            disk.classList.remove('rotating');
+        });
+        audio.addEventListener('ended', () => {
+            disk.classList.remove('rotating');
+        });
+    </script>
+</body>
 </html>
