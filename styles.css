@@ -118,7 +118,7 @@ body {
 .balloon2 { left: 50%; animation-delay: 2s; background: rgba(99, 204, 255, 0.8); }
 .balloon3 { left: 80%; animation-delay: 4s; background: rgba(255, 255, 99, 0.8); }
 .balloon4 { left: 20%; animation-delay: 0s; background: rgba(255, 99, 100, 0.8); }
-.balloon5 { left: 50%; animation-delay: 1s; background: rgba(99, 204, 240, 0.8); }
+.balloon5 { left: 150%; animation-delay: 1s; background: rgba(99, 204, 240, 0.8); }
 
 
 @keyframes floatUp {
