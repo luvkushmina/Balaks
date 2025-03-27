@@ -1,3 +1,4 @@
+
 /* Reset default styles */
 * {
     margin: 0;
@@ -217,4 +218,3 @@ body {
     .guest-list-btn { font-size: 1rem; padding: 8px 16px; }
     .fireworks-text { font-size: 2rem; }
 }
-
