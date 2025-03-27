@@ -3,51 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manthan's Birthday Party 🎉🎂</title>
+    <title>Happy Birthday, Manthan!</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header id="title-box">
-        <h1>Manthan's Birthday Party 🎉🎂</h1>
-    </header>
-    <main>
-        <section id="countdown">
-            <!-- Timer will dynamically populate here -->
-        </section>
-        <button id="join-btn">Join the Party!</button>
-        <section id="guest-box" class="hidden">
-            <h2>Welcome to the Party! 🎂</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Guest</th>
-                        <th>Contribution (₹)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Guest list data -->
-                    <tr><td>Abhishek</td><td>200</td></tr>
-                    <tr><td>Aditya</td><td>50</td></tr>
-                    <tr><td>Ankit</td><td>0</td></tr>
-                    <tr><td>Anshu</td><td>400</td></tr>
-                    <tr><td>Rudra</td><td>200</td></tr>
-                    <tr><td>Tanish</td><td>150</td></tr>
-                    <tr><td>Mayank Bhat</td><td>200</td></tr>
-                    <tr><td>Mayank Rawat</td><td>200</td></tr>
-                    <tr><td>Love Kush</td><td>200</td></tr>
-                    <tr><td>Kushal</td><td>0</td></tr>
-                    <tr><td>Manthan</td><td>600</td></tr>
-                </tbody>
-            </table>
-            <div id="contributions">
-                Contributions So Far: ₹2,200
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>Caution: Party snacks might be too delicious! 🍕</p>
-        <p>Please Bring: ₹200 for party supplies</p>
-    </footer>
+    <!-- Animated balloons -->
+    <div class="balloon-container">
+        <div class="balloon balloon1"></div>
+        <div class="balloon balloon2"></div>
+        <div class="balloon balloon3"></div>
+    </div>
+
+    <!-- Main content -->
+    <div class="container">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPN4ebjiixzIcCbByee7NQzF5gSKbQIFSklXZ4o3oU5Ro4QQIsnv8iLu-TnD5JPMTuql1mFQUrTGEXy47P03YotjO_bwwOAeXaMcRUcfPLWLEK2UaB8uc1BgtHFqhHZ8TKUYbq3nowd4RHxfNDc0QnRjg=w750-h750-s-no-gm" alt="Manthan" class="birthday-image">
+        <h1 class="header">🎉 Manthan's Birthday Party - 29th March 🎉</h1>
+        <div class="timer-container">
+            <div class="timer-box"><span id="days">0</span> Days</div>
+            <div class="timer-box"><span id="hours">0</span> Hours</div>
+            <div class="timer-box"><span id="minutes">0</span> Minutes</div>
+            <div class="timer-box"><span id="seconds">0</span> Seconds</div>
+        </div>
+        <a href="https://67e42ba7cb916b0ac4d3ef70--roaring-pasca-1076fe.netlify.app/" class="guest-list-btn">Guest List</a>
+    </div>
+
+    <!-- Animation sequence container -->
+    <div class="animation-sequence">
+        <div class="cake"></div>
+        <div class="candles">
+            <div class="candle candle1"></div>
+            <div class="candle candle2"></div>
+            <div class="candle candle3"></div>
+        </div>
+        <div class="fireworks-text">Happy Birthday!</div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-confetti/1.6.0/confetti.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
