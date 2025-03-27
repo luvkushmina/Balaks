@@ -32,6 +32,6 @@ window.onload = function() {
     });
 
     // Optional: Add cheerful background music (uncomment and add an audio file if desired)
-    const audio = new Audio('https://www.chosic.com/wp-content/uploads/2023/01/Luke-Bergs-Beach-Vibes(chosic.com).mp3');
+    const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
     audio.play();
 };
